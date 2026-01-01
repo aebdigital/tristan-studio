@@ -1,13 +1,14 @@
 "use client";
 
-import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useSmoothScroll } from "@/components/SmoothScroll";
 
 export default function Hero() {
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 1000], [0, -100]); // 10% parallax, opposite direction
   const overlayOpacity = useTransform(scrollY, [0, 600], [0.2, 0.8]);
   const textOpacity = useTransform(scrollY, [0, 600], [1, 0.4]); // Text darkens/fades slightly
+  const { scrollToSection } = useSmoothScroll();
 
   return (
     <section className="sticky top-0 h-screen w-full overflow-hidden z-0">
@@ -42,12 +43,12 @@ export default function Hero() {
         <p className="text-white text-lg md:text-2xl font-light mb-12 max-w-3xl">
           Tvoríme architektúru, ktorá spája funkciu, estetiku a životný štýl klienta.
         </p>
-        <Link
-          href="#portfolio"
+        <button
+          onClick={() => scrollToSection("#portfolio")}
           className="border-2 border-white text-white px-8 py-3 uppercase tracking-wider rounded-full hover:bg-white hover:text-black transition-all duration-300 inline-block"
         >
           Portfólio
-        </Link>
+        </button>
       </motion.div>
 
       {/* Scroll Indicator */}
