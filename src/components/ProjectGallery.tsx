@@ -64,7 +64,7 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
         return (
           <section
             key={index}
-            className="sticky top-0 h-screen w-full relative"
+            className="relative w-full h-[50vh] md:h-screen md:sticky md:top-0"
             style={{ zIndex: index + 1 }}
           >
             {/* Regular full-screen image */}
