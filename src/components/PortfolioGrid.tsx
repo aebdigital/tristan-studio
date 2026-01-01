@@ -22,7 +22,7 @@ export default function PortfolioGrid() {
                 src={project.thumbnail}
                 alt={project.title}
                 fill
-                className="object-cover group-hover:scale-105 transition-transform duration-300"
+                className="object-cover transition-transform duration-300 scale-105 md:scale-100 md:group-hover:scale-105"
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
               <span className="portfolio-title">{project.title}</span>
@@ -42,7 +42,7 @@ export default function PortfolioGrid() {
                   src="/galeria.png"
                   alt="Galéria MÚR"
                   fill
-                  className="object-contain group-hover:scale-105 transition-transform duration-300"
+                  className="object-contain transition-transform duration-300 scale-105 md:scale-100 md:group-hover:scale-105"
                   sizes="(max-width: 768px) 50vw, 16vw"
                 />
               </div>

@@ -98,3 +98,12 @@ body {
 .portfolio-item:hover .portfolio-title {
   opacity: 1;
 }
+
+/* Always-on hover effects for mobile */
+@media (max-width: 767px) {
+  .portfolio-item::after,
+  .portfolio-item .portfolio-title {
+    opacity: 1;
+  }
+}
+
