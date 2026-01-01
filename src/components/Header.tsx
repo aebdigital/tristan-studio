@@ -31,8 +31,8 @@ export default function Header() {
         {/* Logo */}
         <Link href="/" className="relative z-50">
           <Image
-            src="https://www.tristanstudio.sk/wp-content/uploads/2025/06/output-onlinepngtools.png"
-            alt="TRISTAN studio"
+            src="/logo-removebg-preview.png"
+            alt="TRISTAN studio logo"
             width={212}
             height={76}
             className="w-[150px] md:w-[212px] h-auto"
