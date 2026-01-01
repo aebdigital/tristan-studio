@@ -64,10 +64,10 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
         return (
           <section
             key={index}
-            className="relative w-full aspect-[4/3]"
+            className="relative w-full aspect-[4/3] md:sticky md:top-0 md:h-screen md:aspect-auto"
             style={{ zIndex: index + 1 }}
           >
-            {/* Regular full-screen image */}
+            {/* Regular full-screen image - sticky on desktop for slide-over effect */}
             <Image
               src={image}
               alt={`${project.title} - ${index + 1}`}
