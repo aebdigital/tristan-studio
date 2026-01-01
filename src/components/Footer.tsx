@@ -1,7 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import { services } from "@/data/projects";
+import { useCookieConsent } from "@/components/CookieConsent";
 
 export default function Footer() {
+  const { openSettings } = useCookieConsent();
+
   return (
     <footer id="footer" className="bg-black text-white py-16 px-6 md:px-10">
       <div className="max-w-7xl mx-auto">
@@ -20,7 +25,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="#portfolio"
+                  href="/#portfolio"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
                   Portfólio
@@ -28,7 +33,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="#about"
+                  href="/#about"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
                   O nás
@@ -90,6 +95,20 @@ export default function Footer() {
             >
               Ochrana osobných údajov
             </Link>
+            <button
+              onClick={openSettings}
+              className="text-gray-500 hover:text-white transition-colors"
+            >
+              Cookies
+            </button>
+            <a
+              href="https://aebdigital.sk"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-500 hover:text-white transition-colors"
+            >
+              Tvorba stránky - AEB Digital
+            </a>
           </div>
         </div>
       </div>

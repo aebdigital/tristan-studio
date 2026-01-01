@@ -1,45 +1,54 @@
 "use client";
 
 import Link from "next/link";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function Hero() {
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 1000], [0, -100]); // 10% parallax, opposite direction
+  const overlayOpacity = useTransform(scrollY, [0, 600], [0.2, 0.8]);
+  const textOpacity = useTransform(scrollY, [0, 600], [1, 0.4]); // Text darkens/fades slightly
+
   return (
-    <section className="relative h-screen w-full overflow-hidden">
+    <section className="sticky top-0 h-screen w-full overflow-hidden z-0">
       {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-fixed"
+      <motion.div
+        className="absolute inset-0 bg-cover bg-center"
         style={{
           backgroundImage:
-            "url('https://www.tristanstudio.sk/wp-content/uploads/2025/05/vmo3746.jpg')",
+            "url('/images/sidlo-firmy/vmo3746.jpg')",
+          y,
         }}
       />
 
       {/* Overlay */}
-      <div
-        className="absolute inset-0 bg-black/20"
+      <motion.div
+        className="absolute inset-0 bg-black"
         style={{
+          opacity: overlayOpacity,
           clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
         }}
       />
 
       {/* Content */}
-      <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
-        <h1 className="text-white text-4xl md:text-6xl lg:text-7xl font-light uppercase tracking-wider mb-4">
-          TRISTAN
+      <motion.div className="relative z-10 h-full flex flex-col items-start justify-center text-left px-6 md:px-20 max-w-5xl"
+        style={{ opacity: textOpacity }}
+      >
+        <h1 className="text-white text-4xl md:text-6xl lg:text-7xl font-light uppercase tracking-wider mb-8 leading-tight">
+          <span className="font-bold">MODERNÉ</span><br />
+          <span className="font-bold">ARCHITEKTONICKÉ</span><br />
+          ŠTÚDIO
         </h1>
-        <h2 className="text-white text-2xl md:text-4xl lg:text-5xl font-light uppercase tracking-wider mb-8">
-          studio
-        </h2>
-        <p className="text-white text-lg md:text-xl font-light mb-12 max-w-2xl">
-          Architektúra, ktorá spája funkciu, estetiku a životný štýl
+        <p className="text-white text-lg md:text-2xl font-light mb-12 max-w-3xl">
+          Tvoríme architektúru, ktorá spája funkciu, estetiku a životný štýl klienta.
         </p>
         <Link
           href="#portfolio"
-          className="border-2 border-white text-white px-8 py-3 uppercase tracking-wider rounded-full hover:bg-white hover:text-black transition-all duration-300"
+          className="border-2 border-white text-white px-8 py-3 uppercase tracking-wider rounded-full hover:bg-white hover:text-black transition-all duration-300 inline-block"
         >
           Portfólio
         </Link>
-      </div>
+      </motion.div>
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">

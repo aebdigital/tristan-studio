@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
+import { CookieConsentProvider } from "@/components/CookieConsent";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -18,6 +19,9 @@ export const metadata: Metadata = {
     locale: "sk_SK",
     type: "website",
   },
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
@@ -27,12 +31,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="sk">
-      <body className={`${montserrat.variable} antialiased font-sans`}>
-        <SmoothScroll>
-          <Header />
-          {children}
-          <Footer />
-        </SmoothScroll>
+      <body className={`${montserrat.variable} antialiased font-sans flex flex-col min-h-screen`}>
+        <CookieConsentProvider>
+          <SmoothScroll>
+            <Header />
+            {children}
+            <Footer />
+          </SmoothScroll>
+        </CookieConsentProvider>
       </body>
     </html>
   );

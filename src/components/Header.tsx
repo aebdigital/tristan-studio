@@ -3,33 +3,29 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname, useRouter } from "next/navigation";
+import { useSmoothScroll } from "@/components/SmoothScroll"; // Import the hook
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
+  const { scrollToSection } = useSmoothScroll(); // Use the hook
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 100);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const scrollToFooter = () => {
-    const footer = document.getElementById("footer");
-    if (footer) {
-      footer.scrollIntoView({ behavior: "smooth" });
+  const handleScrollToSection = (id: string) => {
+    setIsMenuOpen(false); // Close mobile menu
+    if (pathname !== "/") {
+      router.push("/");
+      // Delay scroll slightly to ensure page has rendered
+      setTimeout(() => scrollToSection(id), 300);
+    } else {
+      scrollToSection(id);
     }
-    setIsMenuOpen(false);
   };
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 px-6 py-4 md:px-10 md:py-6 transition-all duration-300 ${
-        isScrolled ? "bg-black/90 backdrop-blur-sm" : ""
-      }`}
+      className="absolute top-0 left-0 right-0 z-50 px-6 py-4 md:px-10 md:py-6 transition-all duration-300"
     >
       <nav className="flex items-center justify-between">
         {/* Logo */}
@@ -53,7 +49,19 @@ export default function Header() {
             Domov
           </Link>
           <button
-            onClick={scrollToFooter}
+            onClick={() => handleScrollToSection("#portfolio")}
+            className="text-white text-base uppercase tracking-wider hover:opacity-70 transition-opacity"
+          >
+            Portfólio
+          </button>
+          <button
+            onClick={() => handleScrollToSection("#about")}
+            className="text-white text-base uppercase tracking-wider hover:opacity-70 transition-opacity"
+          >
+            O nás
+          </button>
+          <button
+            onClick={() => handleScrollToSection("#footer")}
             className="text-white text-base uppercase tracking-wider hover:opacity-70 transition-opacity"
           >
             Kontakt
@@ -97,7 +105,19 @@ export default function Header() {
             Domov
           </Link>
           <button
-            onClick={scrollToFooter}
+            onClick={() => handleScrollToSection("#portfolio")}
+            className="text-white text-2xl uppercase tracking-wider hover:opacity-70 transition-opacity"
+          >
+            Portfólio
+          </button>
+          <button
+            onClick={() => handleScrollToSection("#about")}
+            className="text-white text-2xl uppercase tracking-wider hover:opacity-70 transition-opacity"
+          >
+            O nás
+          </button>
+          <button
+            onClick={() => handleScrollToSection("#footer")}
             className="text-white text-2xl uppercase tracking-wider hover:opacity-70 transition-opacity"
           >
             Kontakt
