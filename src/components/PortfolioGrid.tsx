@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { projects } from "@/data/projects";
-import galeriaImg from "../app/galeria.png";
 
 export default function PortfolioGrid() {
   return (
@@ -40,7 +39,7 @@ export default function PortfolioGrid() {
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="relative w-1/2 h-1/2">
                 <Image
-                  src={galeriaImg}
+                  src="/galeria.png"
                   alt="Galéria MÚR"
                   fill
                   className="object-contain group-hover:scale-105 transition-transform duration-300"
