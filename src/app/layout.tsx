@@ -13,7 +13,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.tristanstudio.sk"),
+  metadataBase: new URL("https://tristanstudio.sk"),
   title: {
     default: "TRISTAN studio | Architektonické štúdio",
     template: "%s | TRISTAN studio",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "TRISTAN studio | Architektonické štúdio",
     description: "TRISTAN studio, s.r.o. - Architektonické štúdio v Prešove. Funkcia, estetika a životný štýl.",
-    url: "https://www.tristanstudio.sk",
+    url: "https://tristanstudio.sk",
     siteName: "TRISTAN studio",
     locale: "sk_SK",
     type: "website",
@@ -80,9 +80,9 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "ArchitectureFirm",
     name: "TRISTAN studio",
-    url: "https://www.tristanstudio.sk",
-    logo: "https://www.tristanstudio.sk/favicon.png",
-    image: "https://www.tristanstudio.sk/galeria.png",
+    url: "https://tristanstudio.sk",
+    logo: "https://tristanstudio.sk/favicon.png",
+    image: "https://tristanstudio.sk/galeria.png",
     description: "TRISTAN studio, s.r.o. - Architektonické štúdio v Prešove. Funkcia, estetika a životný štýl.",
     address: {
       "@type": "PostalAddress",

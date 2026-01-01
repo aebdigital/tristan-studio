@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
 
   const title = `${project.title} | TRISTAN studio`;
   const description = `Prezrite si projekt ${project.title} od TRISTAN studio. Architektonický návrh a realizácia v kategórii architektúra a dizajn.`;
-  const url = `https://www.tristanstudio.sk/projekt/${project.slug}`;
+  const url = `https://tristanstudio.sk/projekt/${project.slug}`;
   const images = project.images.length > 0 ? [{ url: project.images[0], width: 1200, height: 630, alt: project.title }] : [];
 
   return {
@@ -73,7 +73,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       name: "TRISTAN studio",
     },
     genre: "Architecture",
-    url: `https://www.tristanstudio.sk/projekt/${project.slug}`,
+    url: `https://tristanstudio.sk/projekt/${project.slug}`,
     description: `Projekt ${project.title} - TRISTAN studio.`,
   };
 
